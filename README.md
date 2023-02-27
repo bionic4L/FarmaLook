@@ -17,6 +17,7 @@
 ### **Запуск проекта**
 pass
 
-### **Автор**
+### **Авторы**
 [Хабовский Артем](https://github.com/bionic4L) - backend python-разработчик
+
 [Востриков Александр](https://github.com/Kivrol) - backend python-разработчик
