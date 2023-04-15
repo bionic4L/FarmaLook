@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,37 +8,49 @@
     <title>FarmaLook</title>
     <style>
         .headerText{
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 55px;
             position: absolute;
             text-align: center;
             top: 45px;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
-            font: 200% serif;
+            color: rgb(43, 94, 195);
         }
         .hd2{
             text-align: center;
         }
-        .thead{
-            text-align: center
-        }
-        .tbody{
-            text-align: left;
-        }
-        table{
-            margin: auto;
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            background: white;
+            max-width: 86%;
+            width: 86%;
             border-collapse: collapse;
-        }
-        td, th {
-            padding: 3px;
-            border: 1px solid black;
-        }
+            text-align: left;
+            margin: auto;
+          }
+          th {
+            font-weight: normal;
+            color: #039;
+            border-bottom: 1px solid #6678b1;
+            padding: 10px 8px;
+          }
+          td {
+            color: #669;
+            padding: 9px 8px;
+            transition: .3s linear;
+          }
+          tr:hover td {
+            color: #f96565;
+          }
         body {
             margin-top: 0;
             margin-left: 0;
             margin-right: 0;
             font: 14pt sans-serif;
-            background: #d7d7d7 url(background.jpg);
+            background: #d7d7d7 url(static/img/background_new_1.jpg);
+            backdrop-filter: blur(5px);
         }
         h1{
             margin-left: 3%;
@@ -48,13 +62,26 @@
             margin-right: 3%;
             font: 150% sans-serif;
         }
+        .hd2{
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 24px;
+            color: rgb(27, 53, 106);
+        }
+        footer{
+            background: #ffffff url(static/img/background_new_footer.jpg);
 
-
+            backdrop-filter: blur(5px);
+            margin-top: 55px;
+            margin-bottom: 45px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            overflow: auto;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="blockBack.jpg" width="100%" height="100px">
+        <img src="static/img/blockBack_new.jpg" width="100%" height="90px">
         <div class="headerText">FarmaLook</div>
     </div>
 
@@ -88,4 +115,10 @@
         </table>
     </div>
 </body>
+<footer class="footer">
+  <center>
+        <p> © 2023 Copyright <span style="color:rgb(34, 80, 155)"><a href="https://github.com/bionic4L/FarmaLook#readme">FarmaLook</a></span> </p>
+        <p> All rights reserved</p>
+  </center>
+</footer>
 </html>
