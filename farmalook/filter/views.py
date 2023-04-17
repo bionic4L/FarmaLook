@@ -1,30 +1,23 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Table
-from django.template import loader
-from django.http import HttpResponse
 
 
 def main_page(request):
     farma_info = Table.objects.all()
-    # farma_info_company_name = farma_info.company_name
-    # farma_info_reg_date = farma_info.reg_date
-    # farma_info_country = farma_info.country_company
-    # farma_info_aid_form = farma_info.aid_form
-    # farma_info_aid_name = farma_info.aid_name
-    # farma_info_mnn = farma_info.mnn
-    # farma_info_dru = farma_info.dru
-    
+    farma_company_unique = Table.objects.values('company_name',).distinct()
+    farma_company_country_unique = Table.objects.values('country_company',).distinct()
+    farma_aid_form_unique = Table.objects.values('aid_form',).distinct()
+    farma_aid_name_unique = Table.objects.values('aid_name',).distinct()
+    farma_mnn_unique = Table.objects.values('mnn',).distinct()
+    farma_dru_unique = Table.objects.values('dru',).distinct()
     context = {
         'farma_info': farma_info,
-        # 'farma_info_company_name': farma_info_company_name,
-        # 'farma_info_reg_date': farma_info_reg_date,
-        # 'farma_info_country': farma_info_country,
-        # 'farma_info_aid_form': farma_info_aid_form,
-        # 'farma_info_aid_name': farma_info_aid_name,
-        # 'farma_info_mnn': farma_info_mnn,
-        # 'farma_info_dru': farma_info_dru
-
-        
+        'farma_company_unique': farma_company_unique,
+        'farma_company_country_unique': farma_company_country_unique,
+        'farma_aid_form_unique': farma_aid_form_unique,
+        'farma_aid_name_unique': farma_aid_name_unique,
+        'farma_mnn_unique': farma_mnn_unique,
+        'farma_dru_unique': farma_dru_unique,
     }
 
     return render(request, 'filter/main_page.html', context)

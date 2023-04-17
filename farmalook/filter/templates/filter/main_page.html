@@ -72,10 +72,13 @@
 
             backdrop-filter: blur(5px);
             margin-top: 55px;
-            margin-bottom: 45px;
+            margin-bottom: -10px;
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
             font-size: 14px;
             overflow: auto;
+        }
+        .company_name_filter{
+            margin-left: 110px;
         }
     </style>
 </head>
@@ -87,16 +90,61 @@
 
     <h2 class="hd2">Таблица закупок</h2>
     <div class="table">
+        <!-- <div class="company_name_filter">
+            <form>
+                <p><input type="button" value="Текст"></p>
+                <p><select>
+                    <option selected="selected">Заказчики</option>
+                    {% for sort in farma_company_unique %}
+                        <option>{{sort.company_name}}</option>
+                    {% endfor %}
+                </select></p>
+            </form>
+        </div> -->
+        <!-- <label for="date-input">Выберите дату:</label>
+        <input type="date" id="date-input" name="date"> -->
         <table>
             <thead class="thead">
                 <tr>
-                    <th>Название компании</th>
+                    <th><select>
+                            <option selected="selected">Название компании</option>
+                            {% for sort in farma_company_unique %}
+                                <option>{{sort.company_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </th>
                     <th>Дата регистрации</th>
-                    <th>Страна регистрации</th>
-                    <th>Форма выпуска</th>
-                    <th>Название препарата</th>
-                    <th>МНН</th>
-                    <th>ДРУ</th>
+                    <th><select>
+                        <option selected="selected">Страна</option>
+                        {% for sort in farma_company_country_unique %}
+                            <option>{{sort.country_company}}</option>
+                        {% endfor %}
+                    </select>
+                    </th>
+                    <th><select>
+                        <option selected="selected">Форма выпуска</option>
+                        {% for sort in farma_aid_form_unique %}
+                            <option>{{sort.aid_form}}</option>
+                        {% endfor %}
+                    </select>
+                    </th>
+                    <th><select>
+                        <option selected="selected">Название препарата</option>
+                        {% for sort in farma_aid_name_unique %}
+                            <option>{{sort.aid_name}}</option>
+                        {% endfor %}
+                    </select>
+                    </th>
+                    <th><select>
+                        <option selected="selected">МНН</option>
+                        {% for sort in farma_mnn_unique %}
+                            <option>{{sort.mnn}}</option>
+                        {% endfor %}
+                    </select>
+                    </th>
+                    <th>
+                        ДРУ
+                    </th>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -118,7 +166,6 @@
 <footer class="footer">
   <center>
         <p> © 2023 Copyright <span style="color:rgb(34, 80, 155)"><a href="https://github.com/bionic4L/FarmaLook#readme">FarmaLook</a></span> </p>
-        <p> All rights reserved</p>
   </center>
 </footer>
 </html>
