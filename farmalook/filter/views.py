@@ -28,7 +28,7 @@ def main_page(request):
 
     # return render(request, 'filter/main_page.html', context)
         return render(request, 'filter/main_page.html', context1)
-    elif request.method == 'Название компании':
+    else:
         farma_info = Table.objects.all()
         context2 = {
             'farma_info': farma_info,

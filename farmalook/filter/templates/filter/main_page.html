@@ -110,7 +110,7 @@
                     <th>
                         <form action="" method="post">
                             {% csrf_token %}
-                            <label for="company_name">Название компании</label>
+                            <label for="company_name"></label>
                                 <select name="company_name" id="company_name">
                                     <option value="">Название компании</option>
                                     {% for sort in farma_company_unique %}
