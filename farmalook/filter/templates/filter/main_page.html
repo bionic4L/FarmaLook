@@ -112,7 +112,7 @@
                             {% csrf_token %}
                             <label for="company_name"></label>
                                 <select name="company_name" id="company_name">
-                                    <option value="">Название компании</option>
+                                    <option value="">Все компании</option>
                                     {% for sort in farma_company_unique %}
                                         <option value="{{ sort.company_name }}">{{ sort.company_name }}</option>
                                     {% endfor %}

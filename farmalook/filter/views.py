@@ -11,10 +11,14 @@ def main_page(request):
     farma_mnn_unique = Table.objects.values('mnn',).distinct()
     farma_dru_unique = Table.objects.values('dru',).distinct()
 
+    company_name = ''
+
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
-        farma_info = Table.objects.filter(company_name=company_name)
-
+        if company_name != '':
+            farma_info = Table.objects.filter(company_name=company_name)
+        else:
+            farma_info = Table.objects.all()
 
         context1 = {
             'farma_info': farma_info,
