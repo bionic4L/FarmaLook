@@ -103,44 +103,61 @@
         </div> -->
         <!-- <label for="date-input">Выберите дату:</label>
         <input type="date" id="date-input" name="date"> -->
+
         <table>
             <thead class="thead">
                 <tr>
-                    <th><select>
+                    <th>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <label for="company_name">Название компании</label>
+                                <select name="company_name" id="company_name">
+                                    <option value="">Название компании</option>
+                                    {% for sort in farma_company_unique %}
+                                        <option value="{{ sort.company_name }}">{{ sort.company_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            <button type="submit">Фильтр</button>
+                        </form>
+                        {% comment %} <select>
                             <option selected="selected">Название компании</option>
                             {% for sort in farma_company_unique %}
-                                <option>{{sort.company_name}}</option>
+                            <option >{{ sort.company_name }}</option>
+                            {% endfor %}
+                        </select> {% endcomment %}
+                    </th>
+                    <th>Дата регистрации</th>
+                    <th>
+                        <select>
+                            <option selected="selected">Страна</option>
+                            {% for sort in farma_company_country_unique %}
+                                <option>{{sort.country_company}}</option>
                             {% endfor %}
                         </select>
                     </th>
-                    <th>Дата регистрации</th>
-                    <th><select>
-                        <option selected="selected">Страна</option>
-                        {% for sort in farma_company_country_unique %}
-                            <option>{{sort.country_company}}</option>
-                        {% endfor %}
-                    </select>
+                    <th>
+                        <select>
+                            <option selected="selected">Форма выпуска</option>
+                            {% for sort in farma_aid_form_unique %}
+                                <option>{{sort.aid_form}}</option>
+                            {% endfor %}
+                        </select>
                     </th>
-                    <th><select>
-                        <option selected="selected">Форма выпуска</option>
-                        {% for sort in farma_aid_form_unique %}
-                            <option>{{sort.aid_form}}</option>
-                        {% endfor %}
-                    </select>
+                    <th>
+                        <select>
+                            <option selected="selected">Название препарата</option>
+                            {% for sort in farma_aid_name_unique %}
+                                <option>{{sort.aid_name}}</option>
+                            {% endfor %}
+                        </select>
                     </th>
-                    <th><select>
-                        <option selected="selected">Название препарата</option>
-                        {% for sort in farma_aid_name_unique %}
-                            <option>{{sort.aid_name}}</option>
-                        {% endfor %}
-                    </select>
-                    </th>
-                    <th><select>
-                        <option selected="selected">МНН</option>
-                        {% for sort in farma_mnn_unique %}
-                            <option>{{sort.mnn}}</option>
-                        {% endfor %}
-                    </select>
+                    <th>
+                        <select>
+                            <option selected="selected">МНН</option>
+                            {% for sort in farma_mnn_unique %}
+                                <option>{{sort.mnn}}</option>
+                            {% endfor %}
+                        </select>
                     </th>
                     <th>
                         ДРУ

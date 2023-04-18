@@ -10,14 +10,33 @@ def main_page(request):
     farma_aid_name_unique = Table.objects.values('aid_name',).distinct()
     farma_mnn_unique = Table.objects.values('mnn',).distinct()
     farma_dru_unique = Table.objects.values('dru',).distinct()
-    context = {
-        'farma_info': farma_info,
-        'farma_company_unique': farma_company_unique,
-        'farma_company_country_unique': farma_company_country_unique,
-        'farma_aid_form_unique': farma_aid_form_unique,
-        'farma_aid_name_unique': farma_aid_name_unique,
-        'farma_mnn_unique': farma_mnn_unique,
-        'farma_dru_unique': farma_dru_unique,
-    }
 
-    return render(request, 'filter/main_page.html', context)
+    if request.method == 'POST':
+        company_name = request.POST.get('company_name')
+        farma_info = Table.objects.filter(company_name=company_name)
+
+
+        context1 = {
+            'farma_info': farma_info,
+            'farma_company_unique': farma_company_unique,
+            'farma_company_country_unique': farma_company_country_unique,
+            'farma_aid_form_unique': farma_aid_form_unique,
+            'farma_aid_name_unique': farma_aid_name_unique,
+            'farma_mnn_unique': farma_mnn_unique,
+            'farma_dru_unique': farma_dru_unique,
+        }
+
+    # return render(request, 'filter/main_page.html', context)
+        return render(request, 'filter/main_page.html', context1)
+    elif request.method == 'Название компании':
+        farma_info = Table.objects.all()
+        context2 = {
+            'farma_info': farma_info,
+            'farma_company_unique': farma_company_unique,
+            'farma_company_country_unique': farma_company_country_unique,
+            'farma_aid_form_unique': farma_aid_form_unique,
+            'farma_aid_name_unique': farma_aid_name_unique,
+            'farma_mnn_unique': farma_mnn_unique,
+            'farma_dru_unique': farma_dru_unique,
+        }
+        return render(request, 'filter/main_page.html', context2)
