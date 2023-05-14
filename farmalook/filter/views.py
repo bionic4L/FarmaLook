@@ -1,8 +1,25 @@
 from django.shortcuts import render
 from .models import Table
+from django.views.generic import ListView
+from django.db.models import Q
+
+
+class SearchResults(ListView):
+    """Класс, отвечающий за отображения страницы с результатами поиска"""
+
+    model = Table
+    template_name = 'filter/search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Table.objects.filter(
+            Q(company_name__icontains=query) | Q(country_company__icontains=query) | Q(aid_form__icontains=query) | Q(aid_name__icontains=query) | Q(mnn__icontains=query) | Q(dru__icontains=query)
+        )
+        return object_list
 
 
 def main_page(request):
+    """Функция получения данных о заказе из базы данных"""
     farma_info = Table.objects.all()
     farma_company_unique = Table.objects.values('company_name',).distinct()
     farma_company_country_unique = Table.objects.values('country_company',).distinct()
